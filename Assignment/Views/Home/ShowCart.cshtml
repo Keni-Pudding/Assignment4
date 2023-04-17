@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Assignment.Models.CartDetail>
+
+@{
+    ViewData["Title"] = "ShowCart";
+   
+}
+
+<h1>ShowCart</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="BillPay">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tên</th>
+            <th scope="col">Màu sắc</th>
+            <th scope="col">Size</th>
+            <th scope="col">Loại</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var a in ViewBag.thuoctinh)
+        {
+            <tr>
+                <th scope="row">@a.name</th>
+                <td>@a.color</td>
+                <td>@a.size</td>
+                <td>@a.category</td>
+                <td>@a.soluong</td>
+                <td>@a.price</td>
+             
+            </tr>
+        }
+        
+        
+</table>
+   
+<button type="submit" class="btn btn-success">
+  ThanhToan
+        <a href="@Url.Action("BillPay","Home",new{})"></a>
+</button>
+</form>

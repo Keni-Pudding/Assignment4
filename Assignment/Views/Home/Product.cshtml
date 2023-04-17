@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Assignment.Models.Product>
+@using Assignment.Models;
+@{
+    ViewData["Title"] = "Product";
+}
+
+<h1>PRODUCT</h1>
+
+
+@*@foreach (var item in Model) {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    <img src=" @Html.DisplayFor(modelItem => item.Image)" width="250px" height="300px"></img>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableQuanlity)
+            </td>
+                
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.ID  }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}*@
+<div class="row">
+    @foreach (Product p in ViewBag.Product)
+{
+    
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Details","Home",new {  id=p.ID  } )" style="text-decoration:none"> 
+                    <img src="/images/@p.Image" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p class="price"> @p.Name</p>
+                        <p class="price">@p.Price </p>
+                    </div>
+                </a>
+                <center> <button type="button" class="btn btn-success" >Mua</button></center>
+            </div>
+
+        </div>
+      
+}
+</div>
+
