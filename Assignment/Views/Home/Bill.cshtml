@@ -1,4 +1,4 @@
-﻿@{
+@{
 }
 
 
@@ -23,6 +23,7 @@
 		@{
 			int count = 1;
 		}
+
 		@foreach (Bill a in ViewBag.Bill)
 		{
 			<tr>
@@ -42,10 +43,14 @@
 					<th>
 						
 						
-						<button  class="btn btn-outline-success"> 
-							<a href="@Url.Action("EditBill","Home",new{id=a.ID})" style="text-decoration:none; color: black">
-								sua
-							</a>
+						
+						<button  class="btn btn-outline-success" >
+
+							@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+							{
+							@Html.ActionLink("Sưa", "EditBill","Home" , new {  Id=a.ID})
+							}
+
 						</button>
 					</th>
 				
