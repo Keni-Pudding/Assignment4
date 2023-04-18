@@ -1,7 +1,7 @@
-﻿@model Assignment.Models.Bill
+@model Assignment.Models.Bill
 
 @{
-    ViewData["Title"] = "EditBill";
+    //ViewData["Title"] = "EditBill";
 }
 
 <h1>EditBill</h1>
@@ -10,9 +10,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditBill" enctype="multipart/form-data">
+        <form  method="post" action="~/Home/EditBill">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-       
+            @Html.HiddenFor(m => m.ID)
+            @Html.HiddenFor(m => m.CreateDate)
+            @Html.HiddenFor(m => m.UserId)
+         
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <select class="form-select" aria-label="Default select example" asp-for="Status">                  
@@ -23,7 +26,7 @@
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" class="col-5 btn rounded my-2">Chỉnh sửa</button>
             </div>
         </form>
     </div>
